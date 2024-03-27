@@ -1,3 +1,9 @@
+
+/**
+ * 创建interface,定义属性抽象方法
+ * 创建class实现interface重写属性及方法
+ * 然后export导出
+ */
 export  interface Rectangle{
   a:number;
   calcArea():number;

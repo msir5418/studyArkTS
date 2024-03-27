@@ -1,7 +1,11 @@
-import {Rectangle,Square,Oblong} from '../entryability/Rectangle'
+/**
+ * 设置number默认值,并加上@State注解
+ * 利用$rawfile()找到图片资源
+ * onChange()获取input实时改变的值,转为int类型后赋给wth
+ */
 @Entry
 @Component
-struct Index {
+struct wIndex {
   @State wth: number = 50
   build() {
       Column() {
