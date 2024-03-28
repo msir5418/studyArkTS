@@ -1,8 +1,10 @@
 {
   "src": [
+    "pages/Index",
     "pages/CalcArea",
     "pages/ChangeText",
     "pages/ChangeWidth",
-    "pages/TestIndex"
+    "pages/TestIndex",
+    "pages/LoginTest"
   ]
 }
