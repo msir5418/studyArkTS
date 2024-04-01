@@ -5,6 +5,7 @@
     "pages/ChangeText",
     "pages/ChangeWidth",
     "pages/TestIndex",
-    "pages/LoginTest"
+    "pages/LoginTest",
+    "pages/Task"
   ]
 }

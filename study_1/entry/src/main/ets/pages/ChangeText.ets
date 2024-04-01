@@ -4,6 +4,7 @@
  * @State注解对数据双向绑定,使得Boolean改变,能实时改变页面字体
  */
 import router from '@ohos.router'
+import { Head } from './Header'
 @Entry
 @Component
 struct tIndex {
@@ -14,6 +15,7 @@ struct tIndex {
         // Text('helloWorld')
         // Text('helloWorld')
         // Text('helloWorld')
+        Head({title:''})
         Text(this.message?'Hello World':'Hello ArkTS')
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
@@ -34,10 +36,12 @@ struct tIndex {
         // 增加一个单击跳转到ChangeWidth的功能
         .onClick(()=>{
               console.info(`Succeeded in clicking the 'Next' button.`)
-              router.pushUrl({url:'pages/ChangeWidth'}).then(()=>{
+              router.pushUrl({
+                url:'pages/Task'
+              }).then(()=>{
                 console.info('Succeeded in jumping to the second page.')
-            }).catch((err)=>{
-                console.info('Succeeded in jumping to the second page.')
+              }).catch((err)=>{
+                console.info('Failed in jumping to the second page.')
             })
         })
       }

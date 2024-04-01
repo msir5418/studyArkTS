@@ -1,11 +1,13 @@
 /**
  * 登录表单Demo
  */
+import {Head} from './Header'
 @Entry
 @Component
 struct login {
   build() {
       Column({space:30}) {
+        Head({title:'登录图片'})
         Image($rawfile("icon.png"))
           .width(200)
           .interpolation(ImageInterpolation.High)

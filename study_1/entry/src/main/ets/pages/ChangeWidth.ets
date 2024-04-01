@@ -4,12 +4,14 @@
  * onChange()获取input实时改变的值,转为int类型后赋给wth
  */
 import router from '@ohos.router'
+import { Head } from './Header'
 @Entry
 @Component
 struct wIndex {
   @State wth: number = 50
   build() {
       Column() {
+        Head({title:''})
         Image($rawfile('icon.png'))
           .width(this.wth)
         TextInput()
