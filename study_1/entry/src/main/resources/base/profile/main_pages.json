@@ -1,0 +1,11 @@
+{
+  "src": [
+    "pages/SecondPage/ShopList",
+    "pages/FifthPage/AnimationPage",
+    "pages/FifthPage/LoginPage",
+    "pages/ThirdPage/Index",
+    "pages/ThirdPage/StatePage",
+    "pages/ThirdPage/Task",
+    "pages/FourthPage/Demo040103"
+  ]
+}
