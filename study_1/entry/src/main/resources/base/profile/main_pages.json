@@ -1,11 +1,26 @@
 {
   "src": [
+    "pages/Index",
     "pages/SecondPage/ShopList",
     "pages/FifthPage/AnimationPage",
     "pages/FifthPage/LoginPage",
     "pages/ThirdPage/Index",
     "pages/ThirdPage/StatePage",
     "pages/ThirdPage/Task",
-    "pages/FourthPage/Demo040103"
+    "pages/FourthPage/Demo040103",
+    "pages/FifthPage/ArrayUIPage",
+    "pages/4-8/StageModuleList",
+    "pages/4-9/DocumentListPage",
+    "pages/4-9/DocumentPage",
+    "pages/4-9/NormaImage",
+    "pages/4-9/HighImage",
+    "pages/4-10/ShowPage",
+    "pages/4-10/CustomizePage",
+    "pages/4-10/PopUp",
+    "pages/4-15/TaskManagePage",
+    "pages/4-16/NotificationPage",
+    "pages/4-16/StoreImagePage",
+    "pages/4-25/ImplicitWant",
+    "pages/4-28/WebTestPage"
   ]
 }

@@ -15,6 +15,30 @@
     {
       "name": "width_label",
       "value": "image_width"
+    },
+    {
+      "name": "StageModulePage_desc",
+      "value": "description"
+    },
+    {
+      "name": "StageModulePage_label",
+      "value": "label"
+    },
+    {
+      "name": "DocumentAbility_desc",
+      "value": "description"
+    },
+    {
+      "name": "DocumentAbility_label",
+      "value": "label"
+    },
+    {
+      "name": "HighAbility_desc",
+      "value": "description"
+    },
+    {
+      "name": "HighAbility_label",
+      "value": "label"
     }
   ]
 }

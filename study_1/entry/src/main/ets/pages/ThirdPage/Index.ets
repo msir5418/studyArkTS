@@ -8,7 +8,24 @@ import { Head } from '../Header'
 @Entry
 @Component
 struct Index {
+
   @State wth: number = 275
+  @State message: string = 'FadeIndex '
+  aboutToAppear(){
+    console.log(this.message+"about To Appear");
+  }
+  onPageShow(){
+    console.log(this.message+"on Page Show")
+  }
+  onBackPress(){
+    console.log(this.message+"on Back Press")
+  }
+  onPageHide(){
+    console.log(this.message+"on Page Hide")
+  }
+  aboutToDisappear(){
+    console.log(this.message+"about To Disappear")
+  }
   build(){
     Column(){
       Head({title:''})

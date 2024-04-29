@@ -8,6 +8,22 @@ import router from '@ohos.router'
 @Entry
 @Component
 struct Demo413{
+  @State message: string = 'Demo '
+  aboutToAppear(){
+    console.log(this.message+"about To Appear");
+  }
+  onPageShow(){
+    console.log(this.message+"on Page Show")
+  }
+  onBackPress(){
+    console.log(this.message+"on Back Press")
+  }
+  onPageHide(){
+    console.log(this.message+"on Page Hide")
+  }
+  aboutToDisappear(){
+    console.log(this.message+"about To Disappear")
+  }
   build() {
     Column({space:20}) {
       Row(){
@@ -61,7 +77,31 @@ struct Demo413{
           .width('100%')
           .height(50)
       }
+      Row(){
+        Button('3.                                              生命周期案例')
+          .onClick(()=>{
+            router.pushUrl({
+              params:{id:3},
+              url:"pages/Index"
+            })
+          })
+          .fontColor(Color.White)
+          .width('100%')
+          .height(50)
+      }
 
+      Row(){
+        Button('3.                                              启动模式案例')
+          .onClick(()=>{
+            router.pushUrl({
+              params:{id:3},
+              url:"pages/4-8/StageModulePage"
+            })
+          })
+          .fontColor(Color.White)
+          .width('100%')
+          .height(50)
+      }
     }
     .width('100%')
     .height('100%')

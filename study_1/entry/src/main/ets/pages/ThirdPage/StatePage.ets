@@ -20,6 +20,8 @@ struct StatePage {
   // @State name:string = 'amy'
   // @State age:number = 19
   @State i:number = 1
+  @State index:number = 0
+  @State go:Person = null
   amy:Person = new Person('amy',19)
   jack:Person = new Person('jack',21,this.amy)
   @State arr:Array<Person> = [this.amy,this.jack]
@@ -27,6 +29,22 @@ struct StatePage {
   // @State isHots:Array<boolean> = [false,true]
   // @State info:Student_info = false
   // @State info_s:Array<Student_info> = [Student_info.NAME,Student_info.SEX]
+  @State message: string = 'StagePage '
+  aboutToAppear(){
+    console.log(this.message+"about To Appear");
+  }
+  onPageShow(){
+    console.log(this.message+"on Page Shw")
+  }
+  onBackPress(){
+    console.log(this.message+"on Back Press")
+  }
+  onPageHide(){
+    console.log(this.message+"on Page Hide")
+  }
+  aboutToDisappear(){
+    console.log(this.message+"about To Disappear")
+  }
   build() {
     Row() {
 
@@ -50,16 +68,21 @@ struct StatePage {
             .fontWeight(FontWeight.Bold)
           ForEach(this.arr,(g:Person,index)=>{
             Row(){
-              Text(`${g.name}:${g.age}`)
-                .fontSize(30)
-                .fontColor('#F00')
-                .onClick(()=>g.age++)
-              Button('删除')
-                .onClick(()=> {
-                  this.arr.splice(index,1)
-                })
+              ListDemo({
+                arr:this.arr,
+                go:g,
+                index:index
+              })
+              // Text(`${g.name}:${g.age}`)
+              //   .fontSize(30)
+              //   .fontColor('#F00')
+              //   .onClick(()=>g.age++)
+              // Button('删除')
+              //   .onClick(()=> {
+              //     this.arr.splice(index,1)
+              //   })
             }
-          })
+          },(g:Person,index) =>  index+'')
         }
         .height('90%')
         //验证@State 能否支持 boolean及其数组
@@ -86,5 +109,40 @@ struct StatePage {
       .width('100%')
     }
     .height('100%')
+  }
+}
+
+@Component
+struct ListDemo {
+  go:Person
+  arr:Array<Person>
+  index:number
+  @State message: string = 'ListDemo '
+  aboutToAppear(){
+    console.log(this.message+"about To Appear");
+  }
+  onPageShow(){
+    console.log(this.message+"on Page Show")
+  }
+  onBackPress(){
+    console.log(this.message+"on Back Press")
+  }
+  onPageHide(){
+    console.log(this.message+"on Page Hide")
+  }
+  aboutToDisappear(){
+    console.log(this.message+"about To Disappear")
+  }
+  build() {
+    Row(){
+      Text(`${this.go.name}:${this.go.age}`)
+        .fontSize(30)
+        .fontColor('#F00')
+        .onClick(()=>this.go.age++)
+      Button('删除')
+        .onClick(()=> {
+          this.arr.splice(this.index,1)
+        })
+    }
   }
 }

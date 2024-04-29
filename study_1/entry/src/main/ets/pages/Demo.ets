@@ -1,19 +1,49 @@
 // xxx.ets
 @Entry
 @Component
-struct MotionPathExample {
-  @State toggle: boolean = true
+struct RatingExample {
+  @State rating: number = 3.5
 
   build() {
     Column() {
-      Button('click me').margin(50)
-        // 执行动画：从起点移动到(300,200)，再到(300,500)，再到终点
-        .motionPath({ path: 'Mstart.x start.y L300 200 L300 500 Lend.x end.y', from: 0.0, to: 1.0, rotatable: true })
-        .onClick(() => {
-          animateTo({ duration: 4000, curve: Curve.Linear }, () => {
-            this.toggle = !this.toggle // 通过this.toggle变化组件的位置
+      Column() {
+        Rating({ rating: this.rating, indicator: false })
+          .stars(5)
+          .stepSize(0.5)
+          .margin({ top: 24 })
+          .onChange((value: number) => {
+            this.rating = value
           })
-        })
-    }.width('100%').height('100%').alignItems(this.toggle ? HorizontalAlign.Start : HorizontalAlign.Center)
+        Text('current score is ' + this.rating)
+          .fontSize(16)
+          .fontColor('rgba(24,36,49,0.60)')
+          .margin({ top: 16 })
+      }.width(360).height(113).backgroundColor('#FFFFFF').margin({ top: 68 })
+
+      Row() {
+        Image('common/testImage.jpg')
+          .width(40)
+          .height(40)
+          .borderRadius(20)
+          .margin({ left: 24 })
+        Column() {
+          Text('Yue')
+            .fontSize(16)
+            .fontColor('#182431')
+            .fontWeight(500)
+          Row() {
+            Rating({ rating: 3.5, indicator: false }).margin({ top: 1, right: 8 })
+            Text('2021/06/02')
+              .fontSize(10)
+              .fontColor('#182431')
+          }
+        }.margin({ left: 12 }).alignItems(HorizontalAlign.Start)
+
+        Text('1st Floor')
+          .fontSize(10)
+          .fontColor('#182431')
+          .position({ x: 295, y: 8 })
+      }.width(360).height(56).backgroundColor('#FFFFFF').margin({ top: 64 })
+    }.width('100%').height('100%').backgroundColor('#F1F3F5')
   }
 }

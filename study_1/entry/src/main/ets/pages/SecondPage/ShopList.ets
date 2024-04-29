@@ -57,94 +57,103 @@ struct ShopList{
   //   {name:'华为mate60',image:$r('app.media.mate60'),price:6999},
   //   {name:'华为mate60',image:$r('app.media.mate60'),price:6999}
   // ]
-
+  @State message: string = 'ShopList '
+  aboutToAppear(){
+    console.log(this.message+"about To Appear");
+  }
+  onPageShow(){
+    console.log(this.message+"on Page Show")
+  }
+  onBackPress(){
+    console.log(this.message+"on Back Press")
+  }
+  onPageHide(){
+    console.log(this.message+"on Page Hide")
+  }
+  aboutToDisappear(){
+    console.log(this.message+"about To Disappear")
+  }
   build() {
 
       Column({ space: 15 }) {
         Row() {
           //调用组件
-          Head({title:'商品列表'} )
+          Head({ title: '商品列表' })
         }
         .width('90%')
         .height('10%')
         .justifyContent(FlexAlign.Start)
-        if (this.username == 'user' && this.pwd == 'user') {
-          List({ space: 20}) {
-            ForEach(this.items, (s: Shop) => {
-              // ForEach(this.item, (s: any) => {
-              ListItem(){
-                Row({ space: 4 }) {
-                  Column() {
-                    Image(s.image)
-                      .width(100)
-                  }
+        List({ space: 20 }) {
+          ForEach(this.items, (s: Shop) => {
+            // ForEach(this.item, (s: any) => {
+            ListItem() {
+              Row({ space: 4 }) {
+                Column() {
+                  Image(s.image)
+                    .width(100)
+                }
 
-                  Column() {
+                Column() {
+                  Row() {
+                    FontBold({ text: s.name, fSize: 22 })
+                  }
+                  .width('100%')
+                  .margin({
+                    bottom: 10
+                  })
+
+                  if (s.subsidy) {
                     Row() {
-                      FontBold({text:s.name,fSize:22})
+                      Text('原价:¥' + s.price)
+                        .fontSize(16)
+                        .fontColor('#F00')
+                        .decoration({ type: TextDecorationType.LineThrough })
                     }
                     .width('100%')
-                    .margin({
-                      bottom: 10
-                    })
-                    if (s.subsidy){
-                      Row() {
-                        Text('原价:¥' + s.price)
-                          .fontSize(16)
-                          .fontColor('#F00')
-                          .decoration({type:TextDecorationType.LineThrough})
-                      }
-                      .width('100%')
-                      Row() {
-                        Text('折扣价:¥' + (s.price-s.subsidy))
-                          .textControl()
-                      }
-                      .width('100%')
-                      Row() {
-                        Text('补贴:¥' + s.subsidy)
-                          .fontSize(16)
-                          .fontColor('#F00')
-                      }
-                      .width('100%')
-                    }else{
-                      Row() {
-                        Text('原价:¥' + s.price)
-                          .fontSize(16)
-                          .fontColor('#F00')
-                      }
-                      .width('100%')
-                    }
-                    if (s.stock <= 5) {
-                      Row() {
-                        Text('库存('+s.stock+')')
-                          .fontSize(16)
-                          .fontColor(this.col)
-                          .onHover(()=>this.col='#fff')
-                      }
-                    }
 
+                    Row() {
+                      Text('折扣价:¥' + (s.price - s.subsidy))
+                        .textControl()
+                    }
+                    .width('100%')
+
+                    Row() {
+                      Text('补贴:¥' + s.subsidy)
+                        .fontSize(16)
+                        .fontColor('#F00')
+                    }
+                    .width('100%')
+                  } else {
+                    Row() {
+                      Text('原价:¥' + s.price)
+                        .fontSize(16)
+                        .fontColor('#F00')
+                    }
+                    .width('100%')
                   }
-                  .height('90%')
+                  if (s.stock <= 5) {
+                    Row() {
+                      Text('库存(' + s.stock + ')')
+                        .fontSize(16)
+                        .fontColor(this.col)
+                        .onHover(() => this.col = '#fff')
+                    }
+                  }
+
                 }
-                .width('100%')
-                .height(120)
-                .backgroundColor('#fff')
-                .borderRadius(20)
+                .height('90%')
               }
-            })
-          }
-          .width('90%')
-        }else{
-          Text('登录失败')
-            .fontColor('#ff0000')
-            .onAppear(()=>{
-              router.showAlertBeforeBackPage({message:'登录失败将返回登录页面'})
-            })
+              .width('100%')
+              .height(120)
+              .backgroundColor('#fff')
+              .borderRadius(20)
+            }
+          })
         }
+        .height('100%')
+        .width('100%')
+        .backgroundColor('#F2F2F2')
+
       }
-      .width('100%')
-      .backgroundColor('#F2F2F2')
-
-
   }
 }

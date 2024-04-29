@@ -1,21 +1,33 @@
 {
   "module": {
-    "requestPermissions":[
+    "requestPermissions": [
       {
-        "name" : "ohos.permission.INTERNET",
+        "name": "ohos.permission.INTERNET",
+        //申请的权限
+//        "name": "ohos.permission.READ_MEDIA"
+      },{
+        "name": "ohos.permission.READ_MEDIA"
       }
     ],
     "name": "entry",
+    //名称entry
     "type": "entry",
+    "srcEntry": './ets/myabilitystage/MyAbilityStage.ts',
+    //类型为entry模块 -->HAP /feature模块/库模块
     "description": "$string:module_desc",
+    //模块描述
     "mainElement": "EntryAbility",
+    //Module中可以包含多个Ability,必须确保只有一个EntryAbility
     "deviceTypes": [
+      //为不同的Module设置不同的设别
       "phone",
       "tablet"
     ],
     "deliveryWithInstall": true,
+    //是否是必须安装的,entry--HAP必须得,feature类型可以设置为false
     "installationFree": false,
     "pages": "$profile:main_pages",
+    //配置在Module中的页面
     "abilities": [
       {
         "name": "EntryAbility",
@@ -25,7 +37,37 @@
         "label": "$string:EntryAbility_label",
         "startWindowIcon": "$media:icon",
         "startWindowBackground": "$color:start_window_background",
+        "launchType": "singleton",
+        //启动的背景颜色
         "exported": true,
+        //支持导出
+        "skills": [
+          {
+            "entities": [
+              "entity.system.home"
+            ],
+            "actions": [
+                "action.system.home"
+            ],
+            "uris": [
+              {
+                "host": '127.0.0.1',
+                "scheme": "https"
+              }
+            ]
+          }
+
+        ]
+      },
+      {
+        "name": "StageModulePage",
+        "srcEntry": "./ets/stagemodulepage/StageModulePage.ts",
+        "description": "$string:StageModulePage_desc",
+        "icon": "$media:icon",
+        "label": "$string:StageModulePage_label",
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:start_window_background",
+        "launchType": "specified",
         "skills": [
           {
             "entities": [
@@ -33,9 +75,41 @@
             ],
             "actions": [
               "action.system.home"
-            ]
-          }
+            ],
+            "uris": []
+          },
         ]
+      },
+      {
+        "name": "DocumentAbility",
+        "srcEntry": "./ets/documentability/DocumentAbility.ts",
+        "description": "$string:DocumentAbility_desc",
+        "icon": "$media:icon",
+        "label": "$string:DocumentAbility_label",
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:start_window_background",
+        "launchType": "specified",
+        "skills": [
+          {
+            "entities": [
+              "entity.system.home"
+            ],
+            "actions": [
+              "action.main.home"
+            ],
+            "uris": []
+          },
+        ]
+      },
+      {
+        "name": "HighAbility",
+        "srcEntry": "./ets/highability/HighAbility.ts",
+        "description": "$string:HighAbility_desc",
+        "icon": "$media:icon",
+        "label": "$string:HighAbility_label",
+        "launchType": "standard",
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:start_window_background"
       }
     ]
   }

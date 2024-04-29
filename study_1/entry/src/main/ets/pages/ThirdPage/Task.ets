@@ -22,6 +22,22 @@ struct TaskStatistic{
   @Consume task_num:number
   // @Prop task_fNum:number
   // @Prop task_num:number
+  @State message: string = 'Task '
+  aboutToAppear(){
+    console.log(this.message+"about To Appear");
+  }
+  onPageShow(){
+    console.log(this.message+"on Page Show")
+  }
+  onBackPress(){
+    console.log(this.message+"on Back Press")
+  }
+  onPageHide(){
+    console.log(this.message+"on Page Hide")
+  }
+  aboutToDisappear(){
+    console.log(this.message+"about To Disappear")
+  }
   build() {
     Row(){
       Text('任务进度:')
@@ -52,6 +68,19 @@ struct TaskStatistic{
     .height(180)
   }
 }
+@CustomDialog
+struct CustomDialogExample {
+  @Link textValue: string
+  @Link inputValue: string
+  cancel:()=>void =() =>{}
+  confirm:()=>void =() =>{}
+  controller?: CustomDialogController
+  build(){
+    Row(){
+      Text('你麻痹')
+    }
+  }
+}
 @Component
 struct TaskList{
   @Consume task_fNum:number
@@ -59,6 +88,21 @@ struct TaskList{
   // @Link task_fNum:number
   // @Link task_num:number
   @State task_arr:Array<Tack_Vo> = []
+  dialogController: CustomDialogController = new CustomDialogController({
+    builder: CustomDialogExample({
+      cancel: this.onCancel,
+      confirm: this.onAccept,
+      textValue: $textValue,
+      inputValue: $inputValue
+    }),
+  })
+  onCancel() {
+    console.info('Callback when the first button is clicked')
+  }
+
+  onAccept() {
+    console.info('Callback when the second button is clicked')
+  }
   build() {
     Column(){
       Row(){
@@ -94,7 +138,7 @@ struct TaskList{
 
   }
 }
-@Builder function  itemEnd(index:number){
+@Builder function itemEnd(index:number){
   Row(){
     Button(){
       Image($r('app.media.ic_public_delete'))
